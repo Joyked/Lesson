@@ -1,9 +1,10 @@
+using System;
 using UnityEngine;
 using UnityEngine.Pool;
 using System.Collections;
-using System.Collections.Generic;
 using Random = UnityEngine.Random;
 
+[RequireComponent(typeof(Collider))]
 public class SpawnObject : MonoBehaviour
 {
     [SerializeField] private Enemy _prefabEnemy;
@@ -12,12 +13,10 @@ public class SpawnObject : MonoBehaviour
     [SerializeField] private float _secondsBeforeAppearance;
 
     private ObjectPool<Enemy> _poolEnemy;
-    private List<Enemy> _listEnemy;
     private Collider _collider;
 
     private void Awake()
     {
-        _listEnemy = new List<Enemy>();
         _collider = GetComponent<Collider>();
         
         _poolEnemy = new ObjectPool<Enemy>
@@ -34,30 +33,29 @@ public class SpawnObject : MonoBehaviour
         _poolEnemy.Get();
     }
 
-    private void OnDisable()
+    private void Start()
     {
-        foreach (var enemy in _listEnemy)
-            enemy.ObjectFell -= ReturnToPool;
+        StartCoroutine(EnemyCycle());
     }
 
     private Enemy CreateEnemy()
     {
-        Enemy enemy = Instantiate(_prefabEnemy, GiveCoordinates(), new Quaternion(0, Random.Range(0, 360), 0, 0));
-        _listEnemy.Add(enemy);
-        enemy.ObjectFell += ReturnToPool;
+        Enemy enemy = Instantiate(_prefabEnemy, GetDirection(), Quaternion.identity);
+        enemy.SetDirection(new Vector3(0, Random.Range(-180, 180), 0));
         return enemy;
     }
 
     private void ActionOnGet(Enemy enemy)
     {
-        enemy.transform.position = GiveCoordinates();
-        enemy.transform.eulerAngles = new Vector3(0, Random.Range(0, 360), 0);
+        enemy.transform.position = GetDirection();
+        enemy.SetDirection(new Vector3(0, Random.Range(-180, 180), 0));
         enemy.gameObject.SetActive(true);
-        StartCoroutine(EnemyCycle());
+        enemy.ObjectFelled += ReturnToPool;
     }
 
     private void ActionOnRelease(Enemy enemy)
     {
+        enemy.ObjectFelled -= ReturnToPool;
         enemy.gameObject.SetActive(false);
     }
 
@@ -68,11 +66,14 @@ public class SpawnObject : MonoBehaviour
     
     private IEnumerator EnemyCycle()
     {
-        yield return new WaitForSeconds(_secondsBeforeAppearance);
-        _poolEnemy.Get();
+        while (true)
+        {
+            yield return new WaitForSeconds(_secondsBeforeAppearance);
+            _poolEnemy.Get();
+        }
     }
     
-    private Vector3 GiveCoordinates()
+    private Vector3 GetDirection()
     {
         Bounds bounds = _collider.bounds;
         return new Vector3(Random.Range(bounds.min.x, bounds.max.x), transform.position.y,

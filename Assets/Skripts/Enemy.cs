@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
 
     private CharacterController _controller;
 
-    public event Action<Enemy> ObjectFell;
+    public event Action<Enemy> ObjectFelled;
 
     private void Awake()
     {
@@ -23,6 +23,11 @@ public class Enemy : MonoBehaviour
             _controller.Move(transform.up * -1 * _powerAttraction);
         
         if (transform.position.y < -5)
-            ObjectFell?.Invoke(this);
+            ObjectFelled?.Invoke(this);
+    }
+
+    public void SetDirection(Vector3 direction)
+    {
+        transform.eulerAngles = direction;
     }
 }
