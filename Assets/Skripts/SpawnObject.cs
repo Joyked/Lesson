@@ -40,15 +40,15 @@ public class SpawnObject : MonoBehaviour
 
     private Enemy CreateEnemy()
     {
-        Enemy enemy = Instantiate(_prefabEnemy, GetDirection(), Quaternion.identity);
-        enemy.SetDirection(new Vector3(0, Random.Range(-180, 180), 0));
+        Enemy enemy = Instantiate(_prefabEnemy, GetSpawnPoint(), Quaternion.identity);
+        enemy.SetDirection(GetDirection());
         return enemy;
     }
 
     private void ActionOnGet(Enemy enemy)
     {
-        enemy.transform.position = GetDirection();
-        enemy.SetDirection(new Vector3(0, Random.Range(-180, 180), 0));
+        enemy.transform.position = GetSpawnPoint();
+        enemy.SetDirection(GetDirection());
         enemy.gameObject.SetActive(true);
         enemy.ObjectFelled += ReturnToPool;
     }
@@ -74,6 +74,14 @@ public class SpawnObject : MonoBehaviour
     }
     
     private Vector3 GetDirection()
+    {
+        float xDirection = Random.Range(-1, 2);
+        float zDirection = Random.Range(-1, 2);
+
+        return new Vector3(xDirection, 0, zDirection);
+    }
+
+    private Vector3 GetSpawnPoint()
     {
         Bounds bounds = _collider.bounds;
         return new Vector3(Random.Range(bounds.min.x, bounds.max.x), transform.position.y,

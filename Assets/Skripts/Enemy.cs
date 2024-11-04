@@ -28,6 +28,6 @@ public class Enemy : MonoBehaviour
 
     public void SetDirection(Vector3 direction)
     {
-        transform.eulerAngles = direction;
+        transform.transform.forward += direction;
     }
 }
