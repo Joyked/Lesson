@@ -1,33 +1,28 @@
 using System;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : Mover
 {
-    [SerializeField] private float _speed;
-    [SerializeField] private float _powerAttraction;
+    public event Action<Enemy> ObjectKilled;
 
-    private CharacterController _controller;
-
-    public event Action<Enemy> ObjectFelled;
-
-    private void Awake()
+    [SerializeField] private ParticleSystem _particleSystem;
+    private Hero _targetHero;
+    
+    public void SetDirection(Hero hero)
     {
-        _controller = GetComponent<CharacterController>();
+        _targetHero = hero;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        _controller.Move(transform.forward * _speed);
-        
-        if (_controller.isGrounded == false)
-            _controller.Move(transform.up * -1 * _powerAttraction);
-        
-        if (transform.position.y < -5)
-            ObjectFelled?.Invoke(this);
+        Direction = _targetHero.transform.position;
     }
 
-    public void SetDirection(Vector3 direction)
+    public void GetDamage()
     {
-        transform.transform.forward += direction;
+        float secontBeforeDestroy = 2f;
+        var particle = Instantiate(_particleSystem, transform.position, transform.rotation);
+        Destroy(particle, secontBeforeDestroy);
+        ObjectKilled?.Invoke(this);
     }
 }

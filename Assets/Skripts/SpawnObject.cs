@@ -1,24 +1,19 @@
-using System;
 using UnityEngine;
 using UnityEngine.Pool;
 using System.Collections;
-using Random = UnityEngine.Random;
 
-[RequireComponent(typeof(Collider))]
 public class SpawnObject : MonoBehaviour
 {
     [SerializeField] private Enemy _prefabEnemy;
+    [SerializeField] private Hero _hero;
     [SerializeField] private int _poolCapacity;
     [SerializeField] private int _poolMaxSize;
     [SerializeField] private float _secondsBeforeAppearance;
 
     private ObjectPool<Enemy> _poolEnemy;
-    private Collider _collider;
 
     private void Awake()
     {
-        _collider = GetComponent<Collider>();
-        
         _poolEnemy = new ObjectPool<Enemy>
         (
             CreateEnemy,
@@ -29,8 +24,6 @@ public class SpawnObject : MonoBehaviour
             defaultCapacity: _poolCapacity,
             maxSize: _poolMaxSize
         );
-
-        _poolEnemy.Get();
     }
 
     private void Start()
@@ -40,23 +33,24 @@ public class SpawnObject : MonoBehaviour
 
     private Enemy CreateEnemy()
     {
-        Enemy enemy = Instantiate(_prefabEnemy, GetSpawnPoint(), Quaternion.identity);
-        enemy.SetDirection(GetDirection());
+        Enemy enemy = Instantiate(_prefabEnemy, transform.position, Quaternion.identity);
+        enemy.SetDirection(_hero);
         return enemy;
     }
 
     private void ActionOnGet(Enemy enemy)
     {
-        enemy.transform.position = GetSpawnPoint();
-        enemy.SetDirection(GetDirection());
+        enemy.transform.position = transform.position;
+        enemy.SetDirection(_hero);
         enemy.gameObject.SetActive(true);
-        enemy.ObjectFelled += ReturnToPool;
+        enemy.ObjectKilled += ReturnToPool;
     }
 
     private void ActionOnRelease(Enemy enemy)
     {
-        enemy.ObjectFelled -= ReturnToPool;
+        enemy.ObjectKilled -= ReturnToPool;
         enemy.gameObject.SetActive(false);
+        _poolEnemy.Get();
     }
 
     private void ReturnToPool(Enemy enemy)
@@ -66,25 +60,10 @@ public class SpawnObject : MonoBehaviour
     
     private IEnumerator EnemyCycle()
     {
-        while (true)
+        for (int i = 0; i < _poolCapacity; i++)
         {
             yield return new WaitForSeconds(_secondsBeforeAppearance);
             _poolEnemy.Get();
         }
-    }
-    
-    private Vector3 GetDirection()
-    {
-        float xDirection = Random.Range(-1, 2);
-        float zDirection = Random.Range(-1, 2);
-
-        return new Vector3(xDirection, 0, zDirection);
-    }
-
-    private Vector3 GetSpawnPoint()
-    {
-        Bounds bounds = _collider.bounds;
-        return new Vector3(Random.Range(bounds.min.x, bounds.max.x), transform.position.y,
-            Random.Range(bounds.min.z, bounds.max.z));
     }
 }
