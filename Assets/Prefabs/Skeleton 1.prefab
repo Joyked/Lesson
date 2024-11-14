@@ -112,7 +112,7 @@ MonoBehaviour:
   _maxSpeed: 6
   _animationSpeed: 0.5
   _speedCooficent: 15
-  _particleSystem: {fileID: 4391634515985727918, guid: a643b603751739a4bbc10f9df1f953c0, type: 3}
+  _particleSystem: {fileID: 4481543753316804760, guid: a643b603751739a4bbc10f9df1f953c0, type: 3}
 --- !u!195 &1350808158873429675
 NavMeshAgent:
   m_ObjectHideFlags: 0

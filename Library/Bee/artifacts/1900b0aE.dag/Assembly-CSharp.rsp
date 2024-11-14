@@ -367,11 +367,11 @@
 "Assets/Resources/UnityTechnologies/ParticlePack/Shared/Scripts/SimpleCameraController.cs"
 "Assets/Resources/UnityTechnologies/ParticlePack/Shared/Scripts/SimpleCharacterMotor.cs"
 "Assets/Resources/UnityTechnologies/ParticlePack/TutorialInfo/Scripts/Readme.cs"
-"Assets/Skripts/Enemy.cs"
-"Assets/Skripts/Hero.cs"
-"Assets/Skripts/Mover.cs"
-"Assets/Skripts/SpawnObject.cs"
-"Assets/Skripts/Weapoint.cs"
+"Assets/Scripts/EnemyMover.cs"
+"Assets/Scripts/HeroMover.cs"
+"Assets/Scripts/Mover.cs"
+"Assets/Scripts/SpawnObject.cs"
+"Assets/Scripts/Weapoint.cs"
 -langversion:9.0
 
 /deterministic

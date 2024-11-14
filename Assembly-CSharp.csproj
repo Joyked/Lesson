@@ -41,19 +41,19 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\Skripts\SpawnObject.cs" />
-    <Compile Include="Assets\Skripts\Enemy.cs" />
-    <Compile Include="Assets\Resources\Red Nebula Studios\RNLowPolyDungeonLite\Scenes\Demo Scripts\ActivateProp.cs" />
-    <Compile Include="Assets\Resources\UnityTechnologies\ParticlePack\Shared\Ramps\Runtime\RampAsset.cs" />
-    <Compile Include="Assets\Resources\UnityTechnologies\ParticlePack\Shared\Scripts\SimpleCharacterMotor.cs" />
-    <Compile Include="Assets\Resources\UnityTechnologies\ParticlePack\TutorialInfo\Scripts\Readme.cs" />
-    <Compile Include="Assets\Resources\UnityTechnologies\ParticlePack\Shared\Scripts\SimpleCameraController.cs" />
     <Compile Include="Assets\Resources\UnityTechnologies\ParticlePack\Shared\Scripts\ProximityActivate.cs" />
-    <Compile Include="Assets\Resources\UnityTechnologies\ParticlePack\EffectExamples\Misc Effects\Scripts\SpawnEffect.cs" />
+    <Compile Include="Assets\Scripts\SpawnObject.cs" />
+    <Compile Include="Assets\Scripts\Weapoint.cs" />
+    <Compile Include="Assets\Resources\UnityTechnologies\ParticlePack\Shared\Ramps\Runtime\RampAsset.cs" />
+    <Compile Include="Assets\Resources\UnityTechnologies\ParticlePack\Shared\Scripts\SimpleCameraController.cs" />
+    <Compile Include="Assets\Resources\UnityTechnologies\ParticlePack\Shared\Scripts\SimpleCharacterMotor.cs" />
+    <Compile Include="Assets\Scripts\EnemyMover.cs" />
+    <Compile Include="Assets\Resources\UnityTechnologies\ParticlePack\TutorialInfo\Scripts\Readme.cs" />
+    <Compile Include="Assets\Scripts\HeroMover.cs" />
+    <Compile Include="Assets\Scripts\Mover.cs" />
     <Compile Include="Assets\Resources\UnityTechnologies\ParticlePack\Shared\Scripts\AdjustTimeScale.cs" />
-    <Compile Include="Assets\Skripts\Hero.cs" />
-    <Compile Include="Assets\Skripts\Mover.cs" />
-    <Compile Include="Assets\Skripts\Weapoint.cs" />
+    <Compile Include="Assets\Resources\Red Nebula Studios\RNLowPolyDungeonLite\Scenes\Demo Scripts\ActivateProp.cs" />
+    <Compile Include="Assets\Resources\UnityTechnologies\ParticlePack\EffectExamples\Misc Effects\Scripts\SpawnEffect.cs" />
     <None Include="Assets\Resources\UnityTechnologies\ParticlePack\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\Resources\UnityTechnologies\ParticlePack\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\Resources\UnityTechnologies\ParticlePack\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

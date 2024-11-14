@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd2fd6ddac2425e4e963ebb5bb940529, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _particleSystem: {fileID: 4481543753316804760, guid: a643b603751739a4bbc10f9df1f953c0, type: 3}
 --- !u!54 &22006905
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -247,6 +248,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9036980633323257398, guid: 2dfbb63c9cdf7504faf4ff26b0581598, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9175385655781485315, guid: 2dfbb63c9cdf7504faf4ff26b0581598, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -272,7 +277,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _minSpeed: 4
   _maxSpeed: 10
-  _animationSpeed: 0.7
+  _animationSpeed: 1
   _speedCooficent: 15
   _tabButtons: 1
 --- !u!195 &47418129
@@ -721,8 +726,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be28ab662348cbb4e8066a772c31b9c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefabEnemy: {fileID: 707135127759287678, guid: 2f08478b08998e04a8912f795260108b, type: 3}
-  _hero: {fileID: 1782516321}
+  _prefabEnemyMover: {fileID: 707135127759287678, guid: 2f08478b08998e04a8912f795260108b, type: 3}
+  _heroMover: {fileID: 1782516321}
   _poolCapacity: 1
   _poolMaxSize: 1
   _secondsBeforeAppearance: 5
@@ -1442,6 +1447,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7019920669011962644, guid: cc91c8ba8b9a34f4d99e70d721f60b64, type: 3}
       propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7413344840680693326, guid: cc91c8ba8b9a34f4d99e70d721f60b64, type: 3}
+      propertyPath: m_ApplyRootMotion
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7647134206250791342, guid: cc91c8ba8b9a34f4d99e70d721f60b64, type: 3}
@@ -3266,6 +3275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd2fd6ddac2425e4e963ebb5bb940529, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _particleSystem: {fileID: 4481543753316804760, guid: a643b603751739a4bbc10f9df1f953c0, type: 3}
 --- !u!136 &1449461955
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4198,8 +4208,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be28ab662348cbb4e8066a772c31b9c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefabEnemy: {fileID: -1314601102890976378, guid: cf498c50a061caa4f92e9fb74a53e5dd, type: 3}
-  _hero: {fileID: 47418128}
+  _prefabEnemyMover: {fileID: -1314601102890976378, guid: cf498c50a061caa4f92e9fb74a53e5dd, type: 3}
+  _heroMover: {fileID: 47418128}
   _poolCapacity: 1
   _poolMaxSize: 1
   _secondsBeforeAppearance: 5
