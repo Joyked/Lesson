@@ -1,21 +1,21 @@
 using UnityEngine;
 using UnityEngine.Pool;
 using System.Collections;
-using UnityEngine.Serialization;
 
 public class SpawnObject : MonoBehaviour
 {
-    [FormerlySerializedAs("_prefabEnemy")] [SerializeField] private EnemyMover _prefabEnemyMover;
-    [FormerlySerializedAs("_hero")] [SerializeField] private HeroMover _heroMover;
+    [SerializeField] private Projectile _prefabProjectile;
+    [SerializeField] private UFOMover _prefabUFO;
+    [SerializeField] private float _speedProjectile;
     [SerializeField] private int _poolCapacity;
     [SerializeField] private int _poolMaxSize;
     [SerializeField] private float _secondsBeforeAppearance;
 
-    private ObjectPool<EnemyMover> _poolEnemy;
+    private ObjectPool<Projectile> _poolEnemy;
 
     private void Awake()
     {
-        _poolEnemy = new ObjectPool<EnemyMover>
+        _poolEnemy = new ObjectPool<Projectile>
         (
             CreateEnemy,
             ActionOnGet,
@@ -29,42 +29,41 @@ public class SpawnObject : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(EnemyCycle());
+        StartCoroutine(ProjectileCycle());
     }
     
-    private IEnumerator EnemyCycle()
+    private IEnumerator ProjectileCycle()
     {
-        for (int i = 0; i < _poolCapacity; i++)
+        while (true)
         {
-            yield return new WaitForSeconds(_secondsBeforeAppearance);
             _poolEnemy.Get();
+            yield return new WaitForSeconds(_secondsBeforeAppearance);
         }
     }
 
-    private EnemyMover CreateEnemy()
+    private Projectile CreateEnemy()
     {
-        EnemyMover enemyMover = Instantiate(_prefabEnemyMover, transform.position, Quaternion.identity);
-        enemyMover.SetDirection(_heroMover);
-        return enemyMover;
+        Projectile projectile = Instantiate(_prefabProjectile, transform.position, Quaternion.identity);
+        projectile.SetParams(_prefabUFO.transform, _speedProjectile);
+        return projectile;
     }
 
-    private void ActionOnGet(EnemyMover enemyMover)
+    private void ActionOnGet(Projectile projectile)
     {
-        enemyMover.transform.position = transform.position;
-        enemyMover.SetDirection(_heroMover);
-        enemyMover.gameObject.SetActive(true);
-        enemyMover.Killed += ReturnToPool;
+        projectile.transform.position = transform.position;
+        projectile.SetParams(_prefabUFO.transform, _speedProjectile);
+        projectile.gameObject.SetActive(true);
+        projectile.HitedTarget += ReturnToPool;
     }
 
-    private void ActionOnRelease(EnemyMover enemyMover)
+    private void ActionOnRelease(Projectile projectile)
     {
-        enemyMover.Killed -= ReturnToPool;
-        enemyMover.gameObject.SetActive(false);
-        _poolEnemy.Get();
+        projectile.HitedTarget -= ReturnToPool;
+        projectile.gameObject.SetActive(false);
     }
 
-    private void ReturnToPool(EnemyMover enemyMover)
+    private void ReturnToPool(Projectile projectile)
     {
-        _poolEnemy.Release(enemyMover);
+        _poolEnemy.Release(projectile);
     }
 }

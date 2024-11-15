@@ -359,19 +359,9 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.VSCode.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
-"Assets/Resources/Red Nebula Studios/RNLowPolyDungeonLite/Scenes/Demo Scripts/ActivateProp.cs"
-"Assets/Resources/UnityTechnologies/ParticlePack/EffectExamples/Misc Effects/Scripts/SpawnEffect.cs"
-"Assets/Resources/UnityTechnologies/ParticlePack/Shared/Ramps/Runtime/RampAsset.cs"
-"Assets/Resources/UnityTechnologies/ParticlePack/Shared/Scripts/AdjustTimeScale.cs"
-"Assets/Resources/UnityTechnologies/ParticlePack/Shared/Scripts/ProximityActivate.cs"
-"Assets/Resources/UnityTechnologies/ParticlePack/Shared/Scripts/SimpleCameraController.cs"
-"Assets/Resources/UnityTechnologies/ParticlePack/Shared/Scripts/SimpleCharacterMotor.cs"
-"Assets/Resources/UnityTechnologies/ParticlePack/TutorialInfo/Scripts/Readme.cs"
-"Assets/Scripts/EnemyMover.cs"
-"Assets/Scripts/HeroMover.cs"
-"Assets/Scripts/Mover.cs"
+"Assets/Scripts/Projectile.cs"
 "Assets/Scripts/SpawnObject.cs"
-"Assets/Scripts/Weapoint.cs"
+"Assets/Scripts/UFOMover.cs"
 -langversion:9.0
 
 /deterministic
