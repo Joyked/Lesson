@@ -15,7 +15,7 @@ C:/Lesson
 -logFile
 Logs/AssetImportWorker2.log
 -srvPort
-50117
+50505
 Successfully changed project path to: C:/Lesson
 C:/Lesson
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -47,12 +47,12 @@ C:/Lesson
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [5980] Host "[IP] 172.16.0.2 [Port] 0 [Flags] 2 [Guid] 1374617269 [EditorId] 1374617269 [Version] 1048832 [Id] WindowsEditor(7,Ilyas) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+Player connection [14476] Host "[IP] 172.16.0.2 [Port] 0 [Flags] 2 [Guid] 1098505789 [EditorId] 1098505789 [Version] 1048832 [Id] WindowsEditor(7,Ilyas) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
 
-Player connection [5980] Host "[IP] 172.16.0.2 [Port] 0 [Flags] 2 [Guid] 1374617269 [EditorId] 1374617269 [Version] 1048832 [Id] WindowsEditor(7,Ilyas) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [14476] Host "[IP] 172.16.0.2 [Port] 0 [Flags] 2 [Guid] 1098505789 [EditorId] 1098505789 [Version] 1048832 [Id] WindowsEditor(7,Ilyas) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
 
 [Physics::Module] Initialized MultithreadedJobDispatcher with {0} workers.
-Refreshing native plugins compatible for Editor in 64.96 ms, found 5 plugins.
+Refreshing native plugins compatible for Editor in 71.47 ms, found 5 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.3.36f1 (7a0645017be0)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.3.36f1/Editor/Data/Resources/UnitySubsystems
@@ -68,102 +68,102 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.3.36f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.3.36f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.3.36f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56636
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56984
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.36f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.36f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.36f1/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.36f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.004736 seconds.
+Registered in 1.791838 seconds.
 Native extension for WindowsStandalone target not found
 Failed to load: C:/Program Files/Unity/Hub/Editor/2021.3.36f1/Editor/Data/PlaybackEngines/iOSSupport\x64\UnityEditor.iOS.Native.dll
 Native extension for iOS target not found
 Native extension for Android target not found
-Android Extension - Scanning For ADB Devices 261 ms
+Android Extension - Scanning For ADB Devices 565 ms
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 64.69 ms, found 5 plugins.
+Refreshing native plugins compatible for Editor in 115.50 ms, found 5 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.868 seconds
+- Completed reload, in 17.242 seconds
 Domain Reload Profiling:
-	ReloadAssembly (868ms)
-		BeginReloadAssembly (78ms)
+	ReloadAssembly (17243ms)
+		BeginReloadAssembly (8155ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (710ms)
-			LoadAssemblies (77ms)
+		EndReloadAssembly (6223ms)
+			LoadAssemblies (8206ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (89ms)
+			SetupTypeCache (4095ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (29ms)
-			SetupLoadedEditorAssemblies (557ms)
+			RebuildScriptCaches (35ms)
+			SetupLoadedEditorAssemblies (1990ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (383ms)
+				InitializePlatformSupportModulesInManaged (1669ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (65ms)
-				BeforeProcessingInitializeOnLoad (1ms)
-				ProcessInitializeOnLoadAttributes (73ms)
-				ProcessInitializeOnLoadMethodAttributes (34ms)
+				RefreshPlugins (116ms)
+				BeforeProcessingInitializeOnLoad (2ms)
+				ProcessInitializeOnLoadAttributes (130ms)
+				ProcessInitializeOnLoadMethodAttributes (73ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.003429 seconds.
+Registered in 0.005423 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Failed to load: C:/Program Files/Unity/Hub/Editor/2021.3.36f1/Editor/Data/PlaybackEngines/iOSSupport\x64\UnityEditor.iOS.Native.dll
 Native extension for iOS target not found
 Native extension for Android target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 106.60 ms, found 5 plugins.
+Refreshing native plugins compatible for Editor in 202.34 ms, found 5 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Package Manager log level set to [2]
 [Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
 [Package Manager] Cannot connect to Unity Package Manager local server
 Mono: successfully reloaded assembly
-- Completed reload, in  1.615 seconds
+- Completed reload, in 18.917 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1616ms)
-		BeginReloadAssembly (116ms)
+	ReloadAssembly (18919ms)
+		BeginReloadAssembly (200ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (5ms)
+			DisableScriptedObjects (7ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (18ms)
-		EndReloadAssembly (1405ms)
-			LoadAssemblies (88ms)
+			CreateAndSetChildDomain (26ms)
+		EndReloadAssembly (18403ms)
+			LoadAssemblies (13475ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (244ms)
-			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (47ms)
-			SetupLoadedEditorAssemblies (1002ms)
+			SetupTypeCache (2926ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (149ms)
+			SetupLoadedEditorAssemblies (1752ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (46ms)
+				InitializePlatformSupportModulesInManaged (72ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (107ms)
-				BeforeProcessingInitializeOnLoad (112ms)
-				ProcessInitializeOnLoadAttributes (650ms)
-				ProcessInitializeOnLoadMethodAttributes (80ms)
-				AfterProcessingInitializeOnLoad (7ms)
+				RefreshPlugins (202ms)
+				BeforeProcessingInitializeOnLoad (227ms)
+				ProcessInitializeOnLoadAttributes (1085ms)
+				ProcessInitializeOnLoadMethodAttributes (153ms)
+				AfterProcessingInitializeOnLoad (12ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (7ms)
+			AwakeInstancesAfterBackupRestoration (14ms)
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
-Refreshing native plugins compatible for Editor in 1.32 ms, found 5 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.10 seconds
+Refreshing native plugins compatible for Editor in 1.26 ms, found 5 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 4313 Unused Serialized files (Serialized files now loaded: 0)
 Unloading 40 unused Assets / (2.0 MB). Loaded Objects now: 4770.
 Memory consumption went from 236.6 MB to 234.5 MB.
-Total: 5.328100 ms (FindLiveObjects: 0.420900 ms CreateObjectMapping: 0.199200 ms MarkObjects: 4.226100 ms  DeleteObjects: 0.479100 ms)
+Total: 5.811800 ms (FindLiveObjects: 0.456400 ms CreateObjectMapping: 0.341200 ms MarkObjects: 4.566300 ms  DeleteObjects: 0.445700 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
@@ -180,89 +180,21 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 67209.418188 seconds.
-  path: Assets/Fantasy Skybox FREE/Panoramics/FS013/FS013_Day_Sunless.png
-  artifactKey: Guid(20f8339484595a64b81579493040f0a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+  Time since last request: 67800.911025 seconds.
+  path: Assets/FlexUnit/UFO_Battleship/Built-In/Prefabs/UFO_Color2.prefab
+  artifactKey: Guid(495d60f0ae8f743379044f1fc477386d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Number of updated assets reloaded before import = 0
-Start importing Assets/Fantasy Skybox FREE/Panoramics/FS013/FS013_Day_Sunless.png using Guid(20f8339484595a64b81579493040f0a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '89e6b03521d2ee7636a522765b84da0d') in 0.175901 seconds 
-Number of asset objects unloaded after import = 2
+Start importing Assets/FlexUnit/UFO_Battleship/Built-In/Prefabs/UFO_Color2.prefab using Guid(495d60f0ae8f743379044f1fc477386d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c1a34d5114495525fddb01dc2360f488') in 1.072783 seconds 
+Number of asset objects unloaded after import = 44
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000030 seconds.
-  path: Assets/Fantasy Skybox FREE/Panoramics/FS013/FS013_Sunrise.mat
-  artifactKey: Guid(3a253cab252a165478338fba0f03e63a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+  Time since last request: 0.000082 seconds.
+  path: Assets/FlexUnit/UFO_Battleship/Built-In/Prefabs
+  artifactKey: Guid(efe3b0360e3ea4785b7b9e0b462cea37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Number of updated assets reloaded before import = 0
-Start importing Assets/Fantasy Skybox FREE/Panoramics/FS013/FS013_Sunrise.mat using Guid(3a253cab252a165478338fba0f03e63a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6c3f5bbdcf0e9e421439eadbc125a99c') in 0.122580 seconds 
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.000048 seconds.
-  path: Assets/Fantasy Skybox FREE/Panoramics/FS013/FS013_Sunrise.png
-  artifactKey: Guid(99bb9346a54a1ef45b3d086ccba8cfad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Number of updated assets reloaded before import = 0
-Start importing Assets/Fantasy Skybox FREE/Panoramics/FS013/FS013_Sunrise.png using Guid(99bb9346a54a1ef45b3d086ccba8cfad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '89b2ac4809ac5a9883edde7aef3ec4c3') in 0.026788 seconds 
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.000047 seconds.
-  path: Assets/Fantasy Skybox FREE/Panoramics/FS013/FS013_Snowy.png
-  artifactKey: Guid(cd6e32b2b89313e4ba54e7fc07ea31f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Number of updated assets reloaded before import = 0
-Start importing Assets/Fantasy Skybox FREE/Panoramics/FS013/FS013_Snowy.png using Guid(cd6e32b2b89313e4ba54e7fc07ea31f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3a9d11da9e3bcf1b4bfe0422cd0987ca') in 0.032816 seconds 
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.000037 seconds.
-  path: Assets/Fantasy Skybox FREE/Panoramics/FS013/FS013_Snowy.mat
-  artifactKey: Guid(0e51b3d2f16325549987d8d6070de3a1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Number of updated assets reloaded before import = 0
-Start importing Assets/Fantasy Skybox FREE/Panoramics/FS013/FS013_Snowy.mat using Guid(0e51b3d2f16325549987d8d6070de3a1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3001e841a32a44abdabb5c8bfb59b130') in 0.030239 seconds 
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 10.759894 seconds.
-  path: Assets/Fantasy Skybox FREE/Panoramics/FS017
-  artifactKey: Guid(9ae9a043594a6d741a2956119b230b43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Number of updated assets reloaded before import = 0
-Start importing Assets/Fantasy Skybox FREE/Panoramics/FS017 using Guid(9ae9a043594a6d741a2956119b230b43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9d60b67cb4b95eaf2a6929a3ecac3167') in 0.015197 seconds 
+Start importing Assets/FlexUnit/UFO_Battleship/Built-In/Prefabs using Guid(efe3b0360e3ea4785b7b9e0b462cea37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'be140afeecfbfe03ad4979e4c795800c') in 0.021149 seconds 
 Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 0.065249 seconds.
-  path: Assets/Fantasy Skybox FREE/Panoramics/FS017/FS017_Day.mat
-  artifactKey: Guid(0d5771081eb9abb43b1792b52260d914) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Number of updated assets reloaded before import = 0
-Start importing Assets/Fantasy Skybox FREE/Panoramics/FS017/FS017_Day.mat using Guid(0d5771081eb9abb43b1792b52260d914) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bea0a70dbcfac1d03281e818c6848d2a') in 0.029087 seconds 
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.000015 seconds.
-  path: Assets/Fantasy Skybox FREE/Panoramics/FS017/FS017_Night.mat
-  artifactKey: Guid(d3823126980dd98479f7761e6d47338a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Number of updated assets reloaded before import = 0
-Start importing Assets/Fantasy Skybox FREE/Panoramics/FS017/FS017_Night.mat using Guid(d3823126980dd98479f7761e6d47338a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '84ecc03d3c11f196e6cb30c212bff097') in 0.035091 seconds 
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.000022 seconds.
-  path: Assets/Fantasy Skybox FREE/Panoramics/FS017/FS017_Night_Moonless.mat
-  artifactKey: Guid(48d4f62e2d5af1643a431d2f4b07ccbb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Number of updated assets reloaded before import = 0
-Start importing Assets/Fantasy Skybox FREE/Panoramics/FS017/FS017_Night_Moonless.mat using Guid(48d4f62e2d5af1643a431d2f4b07ccbb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '63db10e72c00b4c84cd5385b067b3080') in 0.023885 seconds 
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.000018 seconds.
-  path: Assets/Fantasy Skybox FREE/Panoramics/FS017/FS017_Sunset.mat
-  artifactKey: Guid(aed657681c6812845bb7736c343b5e9b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Number of updated assets reloaded before import = 0
-Start importing Assets/Fantasy Skybox FREE/Panoramics/FS017/FS017_Sunset.mat using Guid(aed657681c6812845bb7736c343b5e9b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '44518131a94d72bd0cbfdfcdeac71dab') in 0.021896 seconds 
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.000018 seconds.
-  path: Assets/Fantasy Skybox FREE/Panoramics/FS017/FS017_Night_Moonless.png
-  artifactKey: Guid(71af0a156cd7ed6469b31ce35294a78b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Number of updated assets reloaded before import = 0
-Start importing Assets/Fantasy Skybox FREE/Panoramics/FS017/FS017_Night_Moonless.png using Guid(71af0a156cd7ed6469b31ce35294a78b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b6f30c6fb8526f433448ed7061aeebb6') in 0.027139 seconds 
-Number of asset objects unloaded after import = 2
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0

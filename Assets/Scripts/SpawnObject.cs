@@ -34,24 +34,26 @@ public class SpawnObject : MonoBehaviour
     
     private IEnumerator ProjectileCycle()
     {
+        WaitForSeconds waitForSeconds = new WaitForSeconds(_secondsBeforeAppearance);
+        
         while (true)
         {
             _poolEnemy.Get();
-            yield return new WaitForSeconds(_secondsBeforeAppearance);
+            yield return waitForSeconds;
         }
     }
 
     private Projectile CreateEnemy()
     {
         Projectile projectile = Instantiate(_prefabProjectile, transform.position, Quaternion.identity);
-        projectile.SetParams(_prefabUFO.transform, _speedProjectile);
+        projectile.SetParams(_prefabUFO, _speedProjectile);
         return projectile;
     }
 
     private void ActionOnGet(Projectile projectile)
     {
         projectile.transform.position = transform.position;
-        projectile.SetParams(_prefabUFO.transform, _speedProjectile);
+        projectile.SetParams(_prefabUFO, _speedProjectile);
         projectile.gameObject.SetActive(true);
         projectile.HitedTarget += ReturnToPool;
     }
