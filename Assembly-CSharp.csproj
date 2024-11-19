@@ -41,9 +41,10 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Mover.cs" />
-    <Compile Include="Assets\Scripts\Signaling.cs" />
     <Compile Include="Assets\Scripts\Rogue.cs" />
+    <Compile Include="Assets\Scripts\Mover.cs" />
+    <Compile Include="Assets\Scripts\Detecor.cs" />
+    <Compile Include="Assets\Scripts\Signal.cs" />
     <None Include="Assets\Resources\Fantasy Skybox FREE\Readme.txt" />
     <None Include="Assets\Resources\Fantasy Skybox FREE\ReleaseNotes.txt" />
     <Reference Include="UnityEngine">

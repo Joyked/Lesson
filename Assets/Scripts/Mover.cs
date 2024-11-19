@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
@@ -15,7 +14,10 @@ public class Mover : MonoBehaviour
 
     private void Update()
     {
-        Vector3 direction = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+        const string Horizontal = "Horizontal";
+        const string Vertical = "Vertical";
+        
+        Vector3 direction = new Vector3(Input.GetAxis(Horizontal), 0f, Input.GetAxis(Vertical));
         _controller.Move(direction * _speed * Time.deltaTime);
 
         if (direction != Vector3.zero)
