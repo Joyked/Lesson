@@ -4,7 +4,6 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class Signal : MonoBehaviour
 {
-    [SerializeField] private Detecor _detecor;
     [SerializeField] private float _speedVolume;
     
     private AudioSource _audioSource;
@@ -15,49 +14,42 @@ public class Signal : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
         _audioSource.volume = 0f;
     }
-    
-    private void Start()
-    {
-        StartCoroutine(SoundEffect());
-    }
-    
-    private void OnEnable()
-    {
-        _detecor.RogueInHouse += ReactToRogue;
-    }
-
-    private void OnDisable()
-    {
-        _detecor.RogueInHouse -= ReactToRogue;
-    }
 
     private IEnumerator SoundEffect()
     {
         WaitForSeconds waitForSeconds = new WaitForSeconds(0.1f);
-
-        while (true)
+        _audioSource.Play();
+        
+        while (_isDetected || _audioSource.volume > 0)
         {
             if (_isDetected)
             {
-                _audioSource.volume += _speedVolume;
+                _audioSource.volume = Mathf.MoveTowards(_audioSource.volume, 1, _speedVolume);
+            }
+            else if (_audioSource.volume > 0)
+            {
+                _audioSource.volume = Mathf.MoveTowards(_audioSource.volume, 0, _speedVolume);
             }
             else
             {
-                if(_audioSource.volume > 0)
-                    _audioSource.volume -= _speedVolume;
-                else
-                    _audioSource.Stop();
+                _audioSource.Stop();
+                StopCoroutine(SoundEffect());
             }
             
             yield return waitForSeconds;
         }
     }
 
-    private void ReactToRogue(bool isDetected)
+    public void TurnOn()
     {
-        _isDetected = isDetected;
+        _isDetected = true;
 
-        if (_isDetected && _audioSource.volume == 0)
-            _audioSource.Play();
+        if (_audioSource.volume <= 0)
+            StartCoroutine(SoundEffect());
+    }
+
+    public void TurnOff()
+    {
+        _isDetected = false;
     }
 }

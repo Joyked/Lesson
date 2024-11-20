@@ -43,8 +43,8 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Rogue.cs" />
     <Compile Include="Assets\Scripts\Mover.cs" />
-    <Compile Include="Assets\Scripts\Detecor.cs" />
     <Compile Include="Assets\Scripts\Signal.cs" />
+    <Compile Include="Assets\Scripts\Detector.cs" />
     <None Include="Assets\Resources\Fantasy Skybox FREE\Readme.txt" />
     <None Include="Assets\Resources\Fantasy Skybox FREE\ReleaseNotes.txt" />
     <Reference Include="UnityEngine">
