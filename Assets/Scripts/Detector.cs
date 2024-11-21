@@ -1,18 +1,20 @@
+using System;
 using UnityEngine;
 
 public class Detector : MonoBehaviour
-{
-    [SerializeField] private Signal _signal;
+{ 
+    public event Action RogueIsHere;
+    public event Action RogueIsntHere;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.TryGetComponent(out Rogue rogue))
-            _signal.TurnOn();
+            RogueIsHere?.Invoke();
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.TryGetComponent(out Rogue rogue))
-            _signal.TurnOff();
+            RogueIsntHere?.Invoke();
     }
 }
