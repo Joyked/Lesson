@@ -41,13 +41,15 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\MoveTo.cs" />
-    <Compile Include="Assets\Scripts\RotationTo.cs" />
-    <Compile Include="Assets\Scripts\ChangeScale.cs" />
-    <Compile Include="Assets\Scripts\ChangeColor.cs" />
-    <Compile Include="Assets\Scripts\ChangeText.cs" />
+    <Compile Include="Assets\Scripts\Cookie.cs" />
+    <Compile Include="Assets\Scripts\CookieSpawner.cs" />
+    <Compile Include="Assets\Scripts\Base.cs" />
+    <Compile Include="Assets\Scripts\Scanner.cs" />
+    <Compile Include="Assets\Scripts\AntMover.cs" />
+    <Compile Include="Assets\Scripts\Counter.cs" />
     <None Include="Assets\Resources\Fantasy Skybox FREE\Readme.txt" />
     <None Include="Assets\Resources\Fantasy Skybox FREE\ReleaseNotes.txt" />
+    <None Include="Assets\Stylized Ant Character\ReadMe.txt" />
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.36f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
@@ -782,6 +784,12 @@
     </Reference>
     <Reference Include="Unity.Recorder">
       <HintPath>C:\Lesson\Library\ScriptAssemblies\Unity.Recorder.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.AI.Navigation">
+      <HintPath>C:\Lesson\Library\ScriptAssemblies\Unity.AI.Navigation.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.AI.Navigation.Editor">
+      <HintPath>C:\Lesson\Library\ScriptAssemblies\Unity.AI.Navigation.Editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
