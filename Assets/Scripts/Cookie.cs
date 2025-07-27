@@ -9,6 +9,4 @@ public class Cookie : MonoBehaviour
 
     private void OnEnable() =>
         _rigidbody.velocity = Vector3.zero;
-    
-    
 }

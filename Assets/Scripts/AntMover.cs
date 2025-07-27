@@ -4,61 +4,45 @@ using Random = UnityEngine.Random;
 
 public class AntMover : MonoBehaviour
 {
-    [SerializeField] private Transform _mandible;
-    [SerializeField] private Base _base;
-    
+    private Collector _collector;
     private NavMeshAgent _navMesh;
-    private Cookie _cookieTarget;
-    private bool _isGetCookie;
     private bool _isPosition;
 
     public bool IsAvailable { get; private set; }  = true;
 
-    private void Awake() =>
+    private void Awake()
+    {
         _navMesh = GetComponent<NavMeshAgent>();
+        _collector = GetComponent<Collector>();
+    }
 
 
     private void Update()
     {
-        if (_isGetCookie)
-            _cookieTarget.transform.position = _mandible.position;
-
-        if (_isPosition == false && _isGetCookie == false)
+        if (_isPosition == false && _collector.IsGetCookie == false)
             IsAvailable = true;
     }
 
-    public void SetTarget(Cookie cookie)
+    public void SetTarget(Transform target)
     {
         IsAvailable = false;
-        _cookieTarget = cookie;
-        _navMesh.SetDestination(_cookieTarget.transform.position);
+        
+        _navMesh.SetDestination(target.position);
         _isPosition = true;
     }
-
-    private void OnCollisionEnter(Collision other)
+    
+    public void Strolle()
     {
-        if (other.gameObject.TryGetComponent(out Cookie cookie) && _isGetCookie == false)
-        {
-            if (cookie == _cookieTarget)
-            {
-                _isGetCookie = true;
-                Collider collider = cookie.GetComponent<Collider>();
-                collider.isTrigger = true;
-                _navMesh.SetDestination(_base.transform.position);
-                _isPosition = false;
-            }
-        }
-
-        if (other.gameObject.TryGetComponent(out Base anthill))
-        {
-            _isGetCookie = false;
-            _cookieTarget = null;
+        _collector.PutCookie();
+        _isPosition = false;
+        
+        float minPosition = -5;
+        float maxPosition = 5;
             
-            float xPosition = Random.Range(-5, 5);
-            float zPosition = Random.Range(-5, 5);
+        float xPosition = Random.Range(minPosition, maxPosition);
+        float zPosition = Random.Range(minPosition, maxPosition);
             
-            Vector3 freePosition = new Vector3(xPosition, transform.position.y, zPosition);
-            _navMesh.SetDestination(freePosition);
-        }
+        Vector3 freePosition = new Vector3(xPosition, transform.position.y, zPosition);
+        _navMesh.SetDestination(freePosition);
     }
 }

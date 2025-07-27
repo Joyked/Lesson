@@ -48,9 +48,12 @@ public class CookieSpawner : MonoBehaviour
 
     private void ActionOnGet(Cookie cookie)
     {
-        float xPosition = Random.Range(-7, 8);
-        float zPosition = Random.Range(-7, 8);
+        float minPosition = -7;
+        float maxPosition = 8;
+        float xPosition = Random.Range(minPosition, maxPosition);
+        float zPosition = Random.Range(minPosition, maxPosition);
         float yPosition = 10;
+        
         cookie.transform.position = new Vector3(xPosition, yPosition, zPosition);
         Collider collider = cookie.GetComponent<Collider>();
         collider.isTrigger = false;

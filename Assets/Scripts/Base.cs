@@ -1,29 +1,39 @@
 using System;
-using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 public class Base : MonoBehaviour
 {
-    [SerializeField] private AntMover[] _ants;
-    [SerializeField] private Scanner _scanner;
-
-    private Queue<Cookie> _cookies;
-    
+    [SerializeField] private Collector[] _collectors;
+    [SerializeField]private QueueCookies _cookies;
     public event Action<Cookie> CookieOnBase;
+    
+    private void Start() =>
+        StartCoroutine(SendAntsCoroutine());
 
-    private void Awake() =>
-        _cookies = new Queue<Cookie>();
-
-    private void OnEnable() =>
-        _scanner.CookieOnFloor += AddCookie;
-
-    private void OnDisable() =>
-        _scanner.CookieOnFloor -= AddCookie;
-
-    private void Update()
+    private void OnEnable()
     {
-        if (_cookies.Count > 0)
-            SendAnt();
+        foreach (var collector in _collectors)
+            collector.GotCookie += ReturnAnt;
+    }
+
+    private void OnDisable()
+    {
+        foreach (var collector in _collectors)
+            collector.GotCookie -= ReturnAnt;
+    }
+
+    private IEnumerator SendAntsCoroutine()
+    {
+        bool work = true;
+        
+        while (work)
+        {
+            if (_cookies.HasCookies())
+                SendAnt();
+            
+            yield return null;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -32,16 +42,24 @@ public class Base : MonoBehaviour
             CookieOnBase?.Invoke(cookie);
     }
 
-    private void AddCookie(Cookie cookie) =>
-        _cookies.Enqueue(cookie);
+    private void OnCollisionEnter(Collision other)
+    {
+        if(other.gameObject.TryGetComponent(out AntMover ant))
+            ant.Strolle();
+    }
+
+    private void ReturnAnt(AntMover ant) =>
+        ant.SetTarget(transform);
     
     private void SendAnt()
     {
-        for (int i = 0; i < _ants.Length; i++)
+        for (int i = 0; i < _collectors.Length; i++)
         {
-            if (_ants[i].IsAvailable)
+            if (_collectors[i].Ant.IsAvailable)
             {
-                _ants[i].SetTarget(_cookies.Dequeue());
+                Cookie cookie = _cookies.GiveAway();
+                _collectors[i].SetTargetCookie(cookie);
+                _collectors[i].Ant.SetTarget(cookie.transform);
                 break;
             }
         }

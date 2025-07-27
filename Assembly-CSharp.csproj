@@ -42,11 +42,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Cookie.cs" />
-    <Compile Include="Assets\Scripts\CookieSpawner.cs" />
     <Compile Include="Assets\Scripts\Base.cs" />
     <Compile Include="Assets\Scripts\Scanner.cs" />
     <Compile Include="Assets\Scripts\AntMover.cs" />
+    <Compile Include="Assets\Scripts\Collector.cs" />
     <Compile Include="Assets\Scripts\Counter.cs" />
+    <Compile Include="Assets\Scripts\CookieSpawner.cs" />
+    <Compile Include="Assets\Scripts\QueueCookies.cs" />
     <None Include="Assets\Resources\Fantasy Skybox FREE\Readme.txt" />
     <None Include="Assets\Resources\Fantasy Skybox FREE\ReleaseNotes.txt" />
     <None Include="Assets\Stylized Ant Character\ReadMe.txt" />
@@ -773,6 +775,12 @@
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:\Lesson\Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.AI.Navigation">
+      <HintPath>C:\Lesson\Library\ScriptAssemblies\Unity.AI.Navigation.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.AI.Navigation.Editor">
+      <HintPath>C:\Lesson\Library\ScriptAssemblies\Unity.AI.Navigation.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TestTools.CodeCoverage.Editor">
       <HintPath>C:\Lesson\Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.dll</HintPath>
     </Reference>
@@ -784,12 +792,6 @@
     </Reference>
     <Reference Include="Unity.Recorder">
       <HintPath>C:\Lesson\Library\ScriptAssemblies\Unity.Recorder.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.AI.Navigation">
-      <HintPath>C:\Lesson\Library\ScriptAssemblies\Unity.AI.Navigation.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.AI.Navigation.Editor">
-      <HintPath>C:\Lesson\Library\ScriptAssemblies\Unity.AI.Navigation.Editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
