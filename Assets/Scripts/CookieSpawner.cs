@@ -9,7 +9,7 @@ public class CookieSpawner : MonoBehaviour
     [SerializeField] private Cookie _cookiePrefab;
     [SerializeField] private int _poolCapacity;
     [SerializeField] private int _poolMaxSize;
-    [SerializeField] private Base _base;
+    [SerializeField] private List<BaseAnt> _basesAnt;
 
     private ObjectPool<Cookie> _pool;
     private List<Cookie> _cookies;
@@ -33,11 +33,23 @@ public class CookieSpawner : MonoBehaviour
             _pool.Get();
     }
 
-    private void OnEnable() =>
-        _base.CookieOnBase += _pool.Release;
+    private void OnEnable()
+    {
+        foreach (var baseAnt in _basesAnt)
+            baseAnt.CookieOnBase += _pool.Release;
+    }
 
-    private void OnDisable() =>
-        _base.CookieOnBase -= _pool.Release;
+    private void OnDisable()
+    {
+        foreach (var baseAnt in _basesAnt)
+            baseAnt.CookieOnBase -= _pool.Release;
+    }
+
+    public void AddNewBase(BaseAnt baseAnt)
+    {
+        _basesAnt.Add(baseAnt);
+        baseAnt.CookieOnBase += _pool.Release;
+    }
 
     private Cookie CreateCookie()
     {

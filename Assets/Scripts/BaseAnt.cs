@@ -1,13 +1,16 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class Base : MonoBehaviour
+public class BaseAnt : MonoBehaviour
 {
-    [SerializeField] private Collector[] _collectors;
-    [SerializeField]private QueueCookies _cookies;
+    [SerializeField] private List<Collector> _collectors = new List<Collector>();
+    [SerializeField] private QueueCookies _cookies;
     public event Action<Cookie> CookieOnBase;
-    
+
+    public int AntCount { get { return _collectors.Count; } private set{} }
+
     private void Start() =>
         StartCoroutine(SendAntsCoroutine());
 
@@ -23,15 +26,43 @@ public class Base : MonoBehaviour
             collector.GotCookie -= ReturnAnt;
     }
 
+    public void Create(Collector ant)
+    {
+        foreach (var collector in _collectors)
+            collector.GotCookie -= ReturnAnt;
+        
+        _collectors = new List<Collector>();
+        AddAnt(ant);
+    }
+
+    public void AddAnt(Collector ant)
+    {
+        ant.GotCookie += ReturnAnt;
+        _collectors.Add(ant);
+    }
+
+    public Collector RemoveAnt()
+    {
+        if (_collectors.Count > 1)
+        {
+            Collector collector = _collectors[0];
+            _collectors.RemoveAt(0);
+            return collector;
+        }
+        
+        return null;
+    }
+
+
     private IEnumerator SendAntsCoroutine()
     {
-        bool work = true;
+        bool isWork = true;
         
-        while (work)
-        {
+        while (isWork)  
+        { 
             if (_cookies.HasCookies())
                 SendAnt();
-            
+
             yield return null;
         }
     }
@@ -53,13 +84,13 @@ public class Base : MonoBehaviour
     
     private void SendAnt()
     {
-        for (int i = 0; i < _collectors.Length; i++)
+        for (int i = 0; i < _collectors.Count; i++)
         {
             if (_collectors[i].Ant.IsAvailable)
             {
                 Cookie cookie = _cookies.GiveAway();
-                _collectors[i].SetTargetCookie(cookie);
                 _collectors[i].Ant.SetTarget(cookie.transform);
+                _collectors[i].SetTargetCookie(cookie);
                 break;
             }
         }

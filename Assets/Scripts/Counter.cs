@@ -1,25 +1,47 @@
+using System;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Counter : MonoBehaviour
 {
-    [SerializeField] private Base _base;
-
-    private Text _text;
-    private int _count;
+    private BaseAnt _baseAnt;
+    public int Count { get; private set; }
+    
+    public event Action<int> Changed;
 
     private void Awake() =>
-        _text = GetComponent<Text>();
+        _baseAnt = GetComponent<BaseAnt>();
 
     private void OnEnable() =>
-        _base.CookieOnBase += Increase;
+        _baseAnt.CookieOnBase += Increase;
 
     private void OnDisable() =>
-        _base.CookieOnBase -= Increase;
+        _baseAnt.CookieOnBase -= Increase;
 
     private void Increase(Cookie cookie)
     {
-        _count++;
-        _text.text = _count.ToString();
+        Count++;
+        Changed?.Invoke(Count);
+    }
+
+    public void BuyAnt(int price)
+    {
+        int minPrice = 3;
+        
+        if (price < minPrice)
+            price = minPrice;
+        
+        Count -= price;
+        Changed?.Invoke(Count);
+    }
+
+    public void BuyBase(int price)
+    {
+        int minPrice = 5;
+        
+        if (price < minPrice)
+            price = minPrice;
+        
+        Count -= price;
+        Changed?.Invoke(Count);
     }
 }

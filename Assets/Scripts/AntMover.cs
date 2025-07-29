@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 using Random = UnityEngine.Random;
 
 public class AntMover : MonoBehaviour
@@ -17,18 +18,17 @@ public class AntMover : MonoBehaviour
     }
 
 
-    private void Update()
+    private void LateUpdate()
     {
-        if (_isPosition == false && _collector.IsGetCookie == false)
-            IsAvailable = true;
+            if (_isPosition == false && _collector.IsGetCookie == false)
+                IsAvailable = true;
     }
 
     public void SetTarget(Transform target)
     {
-        IsAvailable = false;
-        
-        _navMesh.SetDestination(target.position);
         _isPosition = true;
+        IsAvailable = false;
+        _navMesh.SetDestination(target.position);
     }
     
     public void Strolle()
