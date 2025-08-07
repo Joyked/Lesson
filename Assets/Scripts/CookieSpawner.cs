@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Pool;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class CookieSpawner : MonoBehaviour
@@ -9,7 +10,7 @@ public class CookieSpawner : MonoBehaviour
     [SerializeField] private Cookie _cookiePrefab;
     [SerializeField] private int _poolCapacity;
     [SerializeField] private int _poolMaxSize;
-    [SerializeField] private List<BaseAnt> _basesAnt;
+    [SerializeField] private List<AntBase> _antBase;
 
     private ObjectPool<Cookie> _pool;
     private List<Cookie> _cookies;
@@ -35,20 +36,20 @@ public class CookieSpawner : MonoBehaviour
 
     private void OnEnable()
     {
-        foreach (var baseAnt in _basesAnt)
+        foreach (var baseAnt in _antBase)
             baseAnt.CookieOnBase += _pool.Release;
     }
 
     private void OnDisable()
     {
-        foreach (var baseAnt in _basesAnt)
+        foreach (var baseAnt in _antBase)
             baseAnt.CookieOnBase -= _pool.Release;
     }
 
-    public void AddNewBase(BaseAnt baseAnt)
+    public void AddNewBase(AntBase antBase)
     {
-        _basesAnt.Add(baseAnt);
-        baseAnt.CookieOnBase += _pool.Release;
+        _antBase.Add(antBase);
+        antBase.CookieOnBase += _pool.Release;
     }
 
     private Cookie CreateCookie()

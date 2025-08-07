@@ -1,37 +1,18 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class AntSpawner : MonoBehaviour
 {
-    [SerializeField] private AntMover _antPrefab;
-    [SerializeField] private int _priceNewAnt = 3;
+    [SerializeField] private Collector _antPrefab;
+    [SerializeField] private int _price;
     
-    private BaseAnt _baseAnt;
-    private Counter _counter;
-    private CreateBase _createBase;
-
-    private void Awake()
+    public void SpawnNewAnt(AntBase antBase, Counter counter)
     {
-        _counter = GetComponent<Counter>();
-        _baseAnt = GetComponent<BaseAnt>();
-        _createBase = GetComponent<CreateBase>();
-    }
-
-    private void OnEnable() =>
-        _counter.Changed += CreateAnt;
-
-    private void OnDisable() =>
-        _counter.Changed -= CreateAnt;
-
-    private void CreateAnt(int cookieCount)
-    {
-        if (cookieCount >= _priceNewAnt && _createBase.IsPosition == false)
+        if (counter.Count >= _price)
         {
-            _counter.BuyAnt(_priceNewAnt);
-            AntMover ant = Instantiate(_antPrefab);
-            _baseAnt.AddAnt(ant.GetComponent<Collector>());
-            
-            if(ant.IsAvailable)
-                ant.Strolle();
+            var newAnt = Instantiate(_antPrefab);
+            antBase.AddAnt(newAnt);
+            counter.GiveAway(_price);
         }
     }
 }

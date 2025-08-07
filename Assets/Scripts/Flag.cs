@@ -1,18 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class Flag : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private Vector3 _basePosition;
+    
+    public bool IsPosition { get; private set; }
+
+    private void Awake() =>
+        _basePosition = transform.position;
+
+    public void NewPosition(Vector3 position)
     {
-        
+        transform.position = position;
+        IsPosition = true;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ReturnPosition()
     {
-        
+        transform.position = _basePosition;
+        IsPosition = false;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.TryGetComponent(out AntBase antBase))
+            IsPosition = false;
     }
 }

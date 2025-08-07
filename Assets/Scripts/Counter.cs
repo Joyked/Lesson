@@ -3,45 +3,33 @@ using UnityEngine;
 
 public class Counter : MonoBehaviour
 {
-    private BaseAnt _baseAnt;
+    private AntBase _antBase;
+    
     public int Count { get; private set; }
     
-    public event Action<int> Changed;
+    public event Action Changed;
 
     private void Awake() =>
-        _baseAnt = GetComponent<BaseAnt>();
+        _antBase = GetComponent<AntBase>();
 
     private void OnEnable() =>
-        _baseAnt.CookieOnBase += Increase;
+        _antBase.CookieOnBase += Increase;
 
     private void OnDisable() =>
-        _baseAnt.CookieOnBase -= Increase;
+        _antBase.CookieOnBase -= Increase;
 
     private void Increase(Cookie cookie)
     {
-        Count++;
-        Changed?.Invoke(Count);
+        ++Count;
+        Changed?.Invoke();
     }
 
-    public void BuyAnt(int price)
+    public void GiveAway(int price)
     {
-        int minPrice = 3;
-        
-        if (price < minPrice)
-            price = minPrice;
+        if (price < 1)
+            price *= -1;
         
         Count -= price;
-        Changed?.Invoke(Count);
-    }
-
-    public void BuyBase(int price)
-    {
-        int minPrice = 5;
-        
-        if (price < minPrice)
-            price = minPrice;
-        
-        Count -= price;
-        Changed?.Invoke(Count);
+        Changed?.Invoke();
     }
 }

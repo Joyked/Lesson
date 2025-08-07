@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,6 +16,6 @@ public class CookieView : MonoBehaviour
     private void OnDisable() =>
         _counter.Changed -= Draw;
 
-    private void Draw(int count) =>
-        _text.text = count.ToString();
+    private void Draw() =>
+        _text.text = _counter.Count.ToString();
 }

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class OnClickHandler : MonoBehaviour
 {
-    private CreateBase _createBase;
+    private AntBase _antBase;
 
     void Update()
     {
@@ -14,16 +14,15 @@ public class OnClickHandler : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 GameObject clickedObject = hit.collider.gameObject;
-                Debug.Log(clickedObject.name);
 
-                if (clickedObject.TryGetComponent(out CreateBase createBase))
+                if (clickedObject.TryGetComponent(out AntBase antBase))
                 {
-                    _createBase = createBase;
-                    _createBase.ReturnPosition();
+                    _antBase = antBase;
+                    _antBase.Flag.ReturnPosition();
                 }
-                else if (_createBase != null)
+                else if (_antBase != null)
                 {
-                    _createBase.NewPosition(hit.point);
+                    _antBase.Flag.NewPosition(hit.point);
                 }
             }
         }

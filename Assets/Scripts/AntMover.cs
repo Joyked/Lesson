@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.AI;
-using System.Collections;
 using Random = UnityEngine.Random;
 
 public class AntMover : MonoBehaviour
@@ -20,8 +19,8 @@ public class AntMover : MonoBehaviour
 
     private void LateUpdate()
     {
-            if (_isPosition == false && _collector.IsGetCookie == false)
-                IsAvailable = true;
+        if (_isPosition == false && _collector.IsGetCookie == false)
+            IsAvailable = true;
     }
 
     public void SetTarget(Transform target)

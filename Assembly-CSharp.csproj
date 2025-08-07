@@ -42,18 +42,18 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Cookie.cs" />
-    <Compile Include="Assets\Scripts\BaseAnt.cs" />
+    <Compile Include="Assets\Scripts\CookieView.cs" />
+    <Compile Include="Assets\Scripts\OnClickHandler.cs" />
+    <Compile Include="Assets\Scripts\AntBase.cs" />
     <Compile Include="Assets\Scripts\Scanner.cs" />
+    <Compile Include="Assets\Scripts\Flag.cs" />
+    <Compile Include="Assets\Scripts\BaseSpawner.cs" />
     <Compile Include="Assets\Scripts\AntMover.cs" />
     <Compile Include="Assets\Scripts\Collector.cs" />
     <Compile Include="Assets\Scripts\Counter.cs" />
-    <Compile Include="Assets\Scripts\CookieSpawner.cs" />
     <Compile Include="Assets\Scripts\QueueCookies.cs" />
     <Compile Include="Assets\Scripts\AntSpawner.cs" />
-    <Compile Include="Assets\Scripts\CookieView.cs" />
-    <Compile Include="Assets\Scripts\CreateBase.cs" />
-    <Compile Include="Assets\Scripts\Flag.cs" />
-    <Compile Include="Assets\Scripts\OnClickHandler.cs" />
+    <Compile Include="Assets\Scripts\CookieSpawner.cs" />
     <None Include="Assets\Resources\Fantasy Skybox FREE\Readme.txt" />
     <None Include="Assets\Resources\Fantasy Skybox FREE\ReleaseNotes.txt" />
     <None Include="Assets\Stylized Ant Character\ReadMe.txt" />
