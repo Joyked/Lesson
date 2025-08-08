@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [RequireComponent(typeof(Counter))]
 public class AntBase : MonoBehaviour
@@ -9,14 +10,17 @@ public class AntBase : MonoBehaviour
     [SerializeField] private List<Collector> _collectors = new List<Collector>();
     [SerializeField] private QueueCookies _cookies;
     [SerializeField] private AntSpawner _antSpawner;
-    [SerializeField] private Flag _flag;
+    [SerializeField] private Flag _flagThisBase;
 
     private int _indexCollectors;
     private BaseSpawner _baseSpawner;
     private Counter _counter;
-    public Flag Flag => _flag;
+    private bool _flagIsPosition;
+    
+    public Flag FlagThisBase => _flagThisBase;
     
     public event Action<Cookie> CookieOnBase;
+    public event Action<Counter, Flag> PurchasedNewBase;
 
     private void Awake()
     {
@@ -55,6 +59,21 @@ public class AntBase : MonoBehaviour
     {
         if (other.gameObject.TryGetComponent(out AntMover ant))
             ant.Strolle();
+
+        if (other.gameObject.TryGetComponent(out Flag flag))
+        {
+            if (flag == FlagThisBase)
+                _flagIsPosition = true;
+        }
+    }
+
+    private void OnCollisionExit(Collision other)
+    {
+        if (other.gameObject.TryGetComponent(out Flag flag))
+        {
+            if (flag == FlagThisBase)
+                _flagIsPosition = false;
+        }
     }
 
     public void Initialize(QueueCookies cookies, BaseSpawner baseSpawner)
@@ -122,13 +141,13 @@ public class AntBase : MonoBehaviour
 
     private void BuyNewAnt()
     {
-        if(Flag.IsPosition == false)
+        if(_flagIsPosition == false)
             _antSpawner.SpawnNewAnt(this, _counter);
     }
 
     private void BuyNewBase()
     {
-        if (_collectors.Count >= 1)
-            _baseSpawner.CreateNewBase(Flag, _counter);
+        if (_collectors.Count >= 1 && _flagIsPosition)
+            PurchasedNewBase?.Invoke(_counter, FlagThisBase); 
     }
 }

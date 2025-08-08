@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class BaseSpawner : MonoBehaviour
@@ -6,19 +8,36 @@ public class BaseSpawner : MonoBehaviour
     [SerializeField] private int _price;
     [Space] 
     [SerializeField] private QueueCookies _cookies;
+    [SerializeField] private List<AntBase> _bases;
+    [SerializeField] private FlagTransporter _flagTransporter;
 
     private AntSpawner _antSpawner;
 
-    public void CreateNewBase(Flag flag, Counter counter)
+    private void OnEnable()
     {
-        if (counter.Count >= _price && flag.IsPosition)
+        foreach (var antBase in _bases)
+            antBase.PurchasedNewBase += CreateNewBase;
+    }
+
+    private void OnDisable()
+    {
+        foreach (var antBase in _bases)
+            antBase.PurchasedNewBase -= CreateNewBase;
+    }
+
+    public void CreateNewBase(Counter counter, Flag flag)
+    {
+        if (counter.Count >= _price)
         {
             var newBase = Instantiate(_antBasePrefab);
             newBase.Initialize(_cookies,  this);
             newBase.transform.position = flag.transform.position;
-            newBase.AddAnt(counter.GetComponent<AntBase>().RemoveAnt());
+            AntBase oldBase = counter.GetComponent<AntBase>();
+            newBase.AddAnt(oldBase.RemoveAnt());
+            _flagTransporter.ReturnOnBase(oldBase);
             counter.GiveAway(_price);
-            flag.ReturnPosition();
+            _bases.Add(newBase);
+            newBase.PurchasedNewBase += CreateNewBase;
         }
     }
 }

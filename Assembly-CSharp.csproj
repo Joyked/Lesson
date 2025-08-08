@@ -43,7 +43,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Cookie.cs" />
     <Compile Include="Assets\Scripts\CookieView.cs" />
-    <Compile Include="Assets\Scripts\OnClickHandler.cs" />
+    <Compile Include="Assets\Scripts\ClickHandler.cs" />
     <Compile Include="Assets\Scripts\AntBase.cs" />
     <Compile Include="Assets\Scripts\Scanner.cs" />
     <Compile Include="Assets\Scripts\Flag.cs" />
@@ -54,6 +54,8 @@
     <Compile Include="Assets\Scripts\QueueCookies.cs" />
     <Compile Include="Assets\Scripts\AntSpawner.cs" />
     <Compile Include="Assets\Scripts\CookieSpawner.cs" />
+    <Compile Include="Assets\Scripts\RayCaster.cs" />
+    <Compile Include="Assets\Scripts\FlagTransporter.cs" />
     <None Include="Assets\Resources\Fantasy Skybox FREE\Readme.txt" />
     <None Include="Assets\Resources\Fantasy Skybox FREE\ReleaseNotes.txt" />
     <None Include="Assets\Stylized Ant Character\ReadMe.txt" />

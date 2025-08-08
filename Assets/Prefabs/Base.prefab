@@ -222,7 +222,7 @@ MonoBehaviour:
   _collectors: []
   _cookies: {fileID: 4047667080582203252, guid: 75bc63c09b38d1441b34e8f081b224d4, type: 3}
   _antSpawner: {fileID: 4603306132206715363, guid: ad3d146de70808942a61483771f71242, type: 3}
-  _flag: {fileID: 231131235894202246}
+  _flagThisBase: {fileID: 231131235894202246}
 --- !u!1 &2540286311178946904
 GameObject:
   m_ObjectHideFlags: 0

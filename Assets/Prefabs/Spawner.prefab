@@ -78,5 +78,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _antBasePrefab: {fileID: 2540286310690402183, guid: 1054b042ae051274e9f0791c99891ca8, type: 3}
-  _price: 5
+  _price: 2
   _cookies: {fileID: 0}
+  _bases: []
+  _flagTransporter: {fileID: 0}
